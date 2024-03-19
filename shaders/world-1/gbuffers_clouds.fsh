@@ -1,0 +1,28 @@
+#version 120
+
+
+
+
+varying vec4 color;
+varying vec2 texcoord;
+
+
+
+
+
+uniform sampler2D texture;
+
+
+vec3 toLinear(vec3 sRGB){
+return sRGB * (sRGB * (sRGB * 0.305306011 + 0.682171111) + 0.012522878);
+}
+
+
+void main() {
+	vec4 albedo = texture2D(texture, texcoord)*color;
+	
+	
+	
+/* DRAWBUFFERS:1 */
+	gl_FragData[0] = vec4(toLinear(albedo.rgb)*150.,albedo.a);
+}
