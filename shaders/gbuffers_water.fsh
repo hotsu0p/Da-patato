@@ -141,7 +141,7 @@ void main() {
 
 		if (iswater > 0.4){
 		float bumpmult = 1.0;
-		if (iswater > 0.9) bumpmult = 1.;
+		if (iswater > 0.9) bumpmult = .6;
 		float parallaxMult = bumpmult;
 		vec3 posxz = p3+cameraPosition;
 
@@ -167,7 +167,7 @@ void main() {
 
 		vec3 direct = lightCol.rgb;
 
-		float shading = 0.7;
+		float shading = 0.5;
 		//compute shadows only if not backface
 		if (diffuseSun > 0.001) {
 			vec3 p3 = mat3(gbufferModelViewInverse) * fragpos + gbufferModelViewInverse[3].xyz;
